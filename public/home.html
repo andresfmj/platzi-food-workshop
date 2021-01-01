@@ -6,34 +6,38 @@
   <title>Home</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body>
-  <nav class="bg-secondary text-gray-100">
+  <nav x-data="{ open: false }" class="fixed z-10 w-full bg-secondary text-gray-100">
     <div class="px-2 bg-secondary text-white flex justify-between items-center">
       <div><img class="h-8 py-1" src="images/logo-w.svg" alt=""></div>
-      <div class="text-2xl">&equiv;</div>
+      <div class="text-2xl cursor-pointer" @click="open = true">&equiv;</div>
     </div>
-    <div class="mx-2">
-      <input class="form-control" type="search" placeholder="Haz tu busqueda aqui..." />
-    </div>
-    <div class="py-2 mx-2 md:flex justify-around items-center">
-      <div class="flex">
-        <div class="mx-1">Precio:</div>
-        <div class="ml-2">$</div>
-        <div class="ml-2 text-primary">$$</div>
-        <div class="ml-2">$$$</div>
-        <div class="ml-2">$$$$</div>
+
+    <div x-show="open" @click.away="open = false">
+      <div class="mx-2">
+        <input class="form-control" type="search" placeholder="Haz tu busqueda aqui..." />
       </div>
-      <div class="flex">
-        <div class="mx-1">Calificacion: </div>
-        <div class="ml-px">&starf;</div>
-        <div class="ml-px text-primary">&starf;</div>
-        <div class="ml-px text-primary">&starf;</div>
-        <div class="ml-px">&starf;</div>
-        <div class="ml-px">&star;</div>
-      </div>
-      <div>
-        <button class="btn btn-primary">Filtrar</button>
+      <div class="py-2 mx-2 md:flex justify-around items-center">
+        <div class="flex">
+          <div class="mx-1">Precio:</div>
+          <div class="ml-2">$</div>
+          <div class="ml-2 text-primary">$$</div>
+          <div class="ml-2">$$$</div>
+          <div class="ml-2">$$$$</div>
+        </div>
+        <div class="flex">
+          <div class="mx-1">Calificacion: </div>
+          <div class="ml-px">&starf;</div>
+          <div class="ml-px text-primary">&starf;</div>
+          <div class="ml-px text-primary">&starf;</div>
+          <div class="ml-px">&starf;</div>
+          <div class="ml-px">&star;</div>
+        </div>
+        <div>
+          <button class="btn btn-primary">Filtrar</button>
+        </div>
       </div>
     </div>
   </nav>
